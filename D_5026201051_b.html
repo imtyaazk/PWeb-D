@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Form input data barang</title>
+
+    <script>
+        function validation(){
+            var hasil = true
+            if($("#Nama barang").val().length>1){
+                $("#namabarangerror").text("nama barang minimal 10 karakter")
+                $("#namabarangerror").focus
+                hasil = false
+            }
+            else{
+                $("#namabarangerror").text("")
+            }
+
+            var n = $("#harga barang ").val()
+            if(isNaN(n) || n.length !=10){
+                $("#hargabarangerror").text("harus angka dan minimal dan minimal 5000")
+                $("hargabarangerror").focus
+                hasil = false
+            }
+            else{
+                $("#hargabarangerror").text("")
+            }
+
+            if($("#jenis barang").val() == 0){
+                $("#jenisbarangerror").text("makanan,minuman,non mamin")
+                $("#jenisbarangerror").focus
+                hasil = false
+            }
+            else{
+                $("#jenisbarangerror").text("")
+            }
+            return hasil
+        }
+    </script>
+    <style>
+        body{
+            background-image: url("https://backgroundcheckall.com/wp-content/uploads/2017/12/background-teknologi-informasi.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        form{
+            background-color: white;
+        }
+       #title{
+           text-align: center;
+       } 
+       label{
+           font-size: large;
+           font-weight: 500;
+       }
+       .error{
+           color: rgb(46, 243, 79);
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="form border border-2 border-dark rounded px-5 py-3 my-5" onsubmit="return validation() " action="https://www.instagram.com/" >
+            <p> Sang intan risqi adi</p>
+            <p>intan</p>
+            <p>5026201051</p>
+
+            <h2 id="title">Form input data barang</h2>
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-5">
+                        <label for="judul">Nama barang</label>
+                    </div>
+                    <div class="col-1">
+                        <p>:</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="Nama" id="Nama" class="form-control" placeholder="Minimal 10 karakter" required>
+                    </div>
+                </div>
+            </div>
+            <p id="Namabarang error" class="error"></p>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-5">
+                        <label for="namabarang">harga</label>
+                    </div>
+                    <div class="col-1">
+                        <p>:</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="nama barang" id="nama barang" class="form-control" placeholder="harus angka dan minimal 5000" required>
+                    </div>
+                </div>
+            </div>
+            <p id="jenisbarangerror" class="error"></p>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-5">
+                        <label for="jenisbarang">jenis barang</label>
+                    </div>
+                    <div class="col-1">
+                        <p>:</p>
+                    </div>
+                    <div class="col-6">
+                            <select class="form-control" id="jenis" name="jenis" required>
+                                <option value="0"></option>
+                              <option value="biasa">makanan</option>
+                              <option value="kilat">minuman</option>
+                              <option value="lama">non mamin</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+            <p id="kodebarcodeerror" class="error"></p>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-5">
+                        <label for="kode">kode barcode</label>
+                    </div>
+                    <div class="col-1">
+                        <p>:</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="number" name="kode barcode" id="kode barcode" class="form-control" minlength="10" maxlength="12" required>
+                        
+                    </div>
+                </div>
+            </div>
+            <br>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg mx-3">Kirim</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button type="reset" class="btn btn-success btn-lg mx-3">Reset</button>
+                    </div>
+                </div>
+        </form>
+        
+    </div>
+    
+</body>
+</html>
