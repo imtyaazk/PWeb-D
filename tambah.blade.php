@@ -1,103 +1,51 @@
+@extends('layout.ceria')
 
+@section('title', 'Dashboard')
 
-Route::get('/pegawai/tambah','PegawaiController@tambah');
-Route::get('/pegawai/tambah','PegawaiController@tambah');
-// method untuk menampilkan view form tambah pegawai
-public function tambah()
-{
+@section('content')
 
-	// memanggil view tambah
-	return view('tambah');
-
-}
-// method untuk menampilkan view form tambah pegawai
-public function tambah()
-{
- 
-	// memanggil view tambah
-	return view('tambah');
- 
-}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Membuat CRUD Pada Laravel -</title>
-</head>
-<body>
-
- 
-	<h2>Data absen</h3>
- 
-	<a href="/data absen"> Kembali</a>
-	
+<div class="container">
+    <h3 class="text-center">Tambah Data Pegawai</h3>
+    <br/>
+	<a href="/absen" class=""> Kembali</a>
 	<br/>
-	<br/>
- 
-	<form action="/data absen/store" method="post">
+	<form action="/absen/store" method="post" class="rounded">
 		{{ csrf_field() }}
-		Nama <input type="text" name="nama" required="required"> <br/>
-		Jabatan <input type="text" name="jabatan" required="required"> <br/>
-		Umur <input type="number" name="umur" required="required"> <br/>
-		Alamat <textarea name="alamat" required="required"></textarea> <br/>
-		<input type="submit" value="Simpan Data">
+        <div class=" mt-5 ">
+            <div class="col-4"> Pegawai : </div>
+            <div class="col-4"> <select id="IDPegawai" name="IDPegawai" required="required">
+                @foreach($pegawai as $p)
+                    <option value="{{ $p->pegawai_id }}"> {{ $p->pegawai_nama }}</option>
+                @endforeach
+            </select>
+            </div>
+        </div>
+        <br>
+
+        <div class="mt-5 form-group">
+            <label for="datetimepicker" class="control-label"></label>
+                <div class="col-4"> Tanggal :</div>
+                <div class="col-sm-8 input-group date" id="datetimepicker">
+                    <input type='text' required="required" class="form-control" name="Tanggal" />
+                        <div class="input-group-addon input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                        </div>
+                </div>
+        </div>
+            <br>
+        <div class="mt-3">
+        <div class="col-sm-4"> Status : </div>
+        <div class="col-8">
+            <input type="radio" id="hadir" name="status" value="H">
+            <label for="hadir">HADIR</label><br>
+            <input type="radio" id="tidak" name="status" value="T" checked="checked">
+            <label for="tidak">TIDAK HADIR</label>
+        </div>
+        </div>
+		<div class="d-grid gap-2 col-12 mx-auto mt-3">
+            <center> <input type="submit" value="Simpan Data"> </center>
+        </div>
 	</form>
- 
-</body>
-</html>
-Route::post('/pegawai/store','PegawaiController@store');
-Route::post('/pegawai/store','PegawaiController@store');
-// method untuk insert data ke table pegawai
-public function store(Request $request)
-{
-	// insert data ke table pegawai
-	DB::table('pegawai')->insert([
-		'pegawai_nama' => $request->nama,
-		'pegawai_jabatan' => $request->jabatan,
-		'pegawai_umur' => $request->umur,
-		'pegawai_alamat' => $request->alamat
-	]);
-	// alihkan halaman ke halaman pegawai
-	return redirect('/pegawai');
+</div>
 
-}
-// method untuk insert data ke table pegawai
-public function store(Request $request)
-{
-	// insert data ke table pegawai
-	DB::table('pegawai')->insert([
-		'pegawai_nama' => $request->nama,
-		'pegawai_jabatan' => $request->jabatan,
-		'pegawai_umur' => $request->umur,
-		'pegawai_alamat' => $request->alamat
-	]);
-	// alihkan halaman ke halaman pegawai
-	return redirect('/pegawai');
- 
-}
-public function store(Request $request) 
-{
-public function store(Request $request) 
-{
-// insert data ke table absen
-DB::table('mahasiswa')->insert([
-	'pegawai_nama' => $request->nama,
-	'pegawai_jabatan' => $request->jabatan,
-	'pegawai_umur' => $request->umur,
-	'pegawai_alamat' => $request->alamat
-]);
-// insert data ke table absen
-DB::table('mahasiswa')->insert([
-	'pegawai_nama' => $request->nama,
-	'pegawai_jabatan' => $request->jabatan,
-	'pegawai_umur' => $request->umur,
-	'pegawai_alamat' => $request->alamat
-]);
-INSERT INTO MAHASISWA ('mahasiswa_nama','mahasiswa_jabatan','mahasiswa_umur','mahasiswa_alamat') VALUES ('nama','jabatan','umur','alamat');
-INSERT INTO MAHASISWA ('mahasiswa_nama','mahasiswa_jabatan','mahasiswa_umur','mahasiswa_alamat') VALUES ('nama','jabatan','umur','alamat');
-INSERT INTO MAHASISWA ('','mahasiswa_jabatan','mahasiswa_umur','mahasiswa_alamat') VALUES ('nama','jabatan','umur','alamat');
-// alihkan halaman ke halaman absen
-return redirect('/absen');
-// alihkan halaman ke halaman absen
-return redirect('/absen');
-
-   
+@endsection
