@@ -1,0 +1,48 @@
+d@extends('layout.ceria')
+
+@section('title', 'Data kopi')
+
+@section('content')
+
+<div class="container">
+	<h3 class="text-center">detail kopi</h3>
+
+	<a href="/kopi" class="btn btn-warning"> Kembali</a>
+
+	<br/>
+	<br/>
+
+	@foreach($kopi as $mo)
+
+        <div class="">
+            <div class="col-3"> tipe kopi </div>
+            <div class="col-1">:</div>
+            <div class="col-8">
+                {{ $mo->tipekopi }}
+            </div>
+        </div><br>
+        <div class="mt-5">
+            <div class="col-3"> bahan kopi </div>
+            <div class="col-1">:</div>
+            <div class="col-8">
+                {{ $mo->bahankopi }}
+            </div>
+        </div><br>
+        <div class="mt-5">
+            <div class="col-3"> Stock kopi </div>
+            <div class="col-1">:</div>
+            <div class="col-8">
+                {{ $mo->stockkopi }}
+            </div>
+        </div><br>
+        <div class="mt-5">
+            <div class="col-3"> Tersedia </div>
+            <div class="col-1">:</div>
+            <div class="col-8">
+                {{ $mo->tersedia }}
+            </div>
+        </div><br/>
+	@endforeach
+</div>
+
+@endsection

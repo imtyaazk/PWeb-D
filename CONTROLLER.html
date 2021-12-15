@@ -1,0 +1,30 @@
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class kursiController extends Controller
+{
+    public function index()
+    {
+    	// mengambil data dari table kopi
+        //$absen = DB::table('absen')->get();
+        $kopi = DB::table('kopi')->paginate(8);
+
+    	// mengirim data kopi ke view index
+    	return view('kopi.index',['kopi' => $kopi]);
+
+    }
+    // method untuk menampilkan view form tambah kopi
+    public function tambah()
+    {
+        // memanggil view tambah
+        return view('kursi.tambah');
+    }
+
+    public function store(Request $request)
+    {
+	DB::table('kopi')->insert([
+		'jeniskopi' => $request->merkkursi,
+		'stockkopi' => $request->stockkopi,
+		'tersedia…

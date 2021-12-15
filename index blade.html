@@ -1,0 +1,51 @@
+@extends('layout.ceria')
+
+@section('title', 'Data kopi')
+
+@section('content')
+
+<div>
+    <div class="container">
+	<h3 class="text-center mt-1">Data kopi</h3>
+	<a href="/kopi/tambah" class="btn btn-secondary" > + Tambah Data kopi</a>
+	<br/>
+    <div class="container" align="center">
+        <p>Temukan kopi berdasarkan merk :</p>
+	    <form action="/kopi/cari" method="GET">
+            <input class="form-control" type="text" name="cari" placeholder="Cari kopi .." value="{{ old('cari') }}">
+            <input class="form-control btn-primary" type="submit" value="CARI">
+	    </form>
+    </div>
+	<table class="table table-success table-striped mt-3">
+		<tr>
+			<th>tipekopi</th>
+			<th>bahankopi</th>
+			{{-- <th>tipe kopi</th>
+			<th>Tersedia</th> --}}
+			<th>Opsi</th>
+		</tr>
+		@foreach($kopi as $mo)
+		<tr>
+			<td>{{ $mo->tipekopi }}</td>
+			<td>{{ $mo->bahankopi }}</td>
+			{{--<td>{{ $mo->stockkopi }}</td>
+			<td>{{ $mo->tersedia }}</td>--}}
+			<td>
+                <a href="/kopi/detail/{{ $mo->tipekopi }}" class="btn btn-info" >View Detail</a>
+				<a href="/kopi/edit/{{ $mo->tipekopi }}" class="btn btn-warning" >Edit</a>
+				<a href="/kopi/hapus/{{ $mo->tipekopi }}" class="btn btn-danger" >Hapus</a>
+			</td>
+		</tr>
+		@endforeach
+	</table>
+
+        {{ $kopi->links() }}
+
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</div>
+
+
+
+@endsection
