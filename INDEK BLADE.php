@@ -13,33 +13,26 @@
  
 	<table border="1">
 		<tr>
-			<th>Nama</th>
-			<th>Jabatan</th>
-			<th>Umur</th>
-			<th>Alamat</th>
-			<th>Opsi</th>
+			<th>ID</th>
+			<th>NRP</th>
+			<th>NILAI ANGKA</th>
+			<th>SKS</th>
+			<th>nilaihuruf</th>
+            <th>nilaiangka</th>
 		</tr>
-		@foreach($pegawai as $p)
+		@foreach($mahasiswa as $p)
 		<tr>
-			<td>{{ $p->pegawai_nama }}</td>
-			<td>{{ $p->pegawai_jabatan }}</td>
-			<td>{{ $p->pegawai_umur }}</td>
-			<td>{{ $p->pegawai_alamat }}</td>
-			<td>
-				<a href="/pegawai/edit/{{ $p->pegawai_id }}">Edit</a>
+			<td>{{ $p->mahasiswa_id }}</td>
+			<td>{{ $p->mahasiswa_NRP }}</td>
+			<td>{{ $p->mahasiswa_SKS }}</td>
+			<td>{{ $p->mahasiswa_nilaihuruf}}</td>
+			<td>{{ $p->mahasiswa_nilaiangka }}</td>
+		
+				<a href="/mahasiswa/edit/{{ $p->mahasiswa_id }}">Edit</a>
 				|
-				<a href="/pegawai/hapus/{{ $p->pegawai_id }}">Hapus</a>
+				<a href="/mahasiswa/hapus/{{ $p->mahasiswa_id }}">Hapus</a>
 			</td>
-            @foreach($pegawai as $p)
-<tr>
-	<td>{{ $p->pegawai_nama }}</td>
-	<td>{{ $p->pegawai_jabatan }}</td>
-	<td>{{ $p->pegawai_umur }}</td>
-	<td>{{ $p->pegawai_alamat }}</td>
-	<td>
-		<a href="/pegawai/edit/{{ $p->pegawai_id }}">Edit</a>
-		|
-		<a href="/pegawai/hapus/{{ $p->pegawai_id }}">Hapus</a>
+            @foreach($mahasiswa as $p)
 	</td>
 		</tr>
 		@endforeach
