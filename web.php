@@ -55,6 +55,11 @@ Route::get('/absen/edit/{id}','AbsenController@edit');
 Route::post('/absen/update','AbsenController@update');
 Route::get('/absen/hapus/{id}','AbsenController@hapus');
 
+//CRUD Nilai Kuliah
+Route::get('/nilaikuliah','NilaiController@index');
+Route::get('/nilaikuliah/tambah','NilaiController@tambah');
+Route::post('/nilaikuliah/store','NilaiController@store');
+
 Route::get('home', function () {
     return view('layout.ceria');
 });
